@@ -211,6 +211,142 @@
             
 
   
+    <article id="post-LinearList" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/10/02/LinearList/" target="_blank">线性表、栈、队列</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/10/02/LinearList/" class="archive-article-date">
+        <time datetime="2021-10-02T13:18:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-02</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    
+    
+    
+    <h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ADT LinearList&#123;</span><br><span class="line">    数据对象: D</span><br><span class="line">    数据关系: R</span><br><span class="line">    操作集合:</span><br><span class="line">        CreatList(&amp;L);</span><br><span class="line">        构造一个空的线性表<span class="function">L</span></span><br><span class="line"><span class="function">        <span class="title">Length</span><span class="params">(L)</span></span>;</span><br><span class="line">        返回线性表L中的数据元素个数</span><br><span class="line">        Get(L,i);</span><br><span class="line">        返回线性表L中第i个元素的值</span><br><span class="line">        Locate(L,x);</span><br><span class="line">        返回线性表中值为x的元素的位置</span><br><span class="line">        Insert(L,x,i);</span><br><span class="line">        在线性表L的第i个位置插入一个值为x的数据元素</span><br><span class="line">        Delete(L,i);</span><br><span class="line">        删除线性表L中的第i个数据元素</span><br><span class="line">        Prior(L,a);</span><br><span class="line">        返回a的直接前驱</span><br><span class="line">        Next(L,a);</span><br><span class="line">        返回a的直接后继</span><br><span class="line">&#125;ADT LinearList</span><br></pre></td></tr></table></figure>
+
+<h3 id="顺序存储"><a href="#顺序存储" class="headerlink" title="顺序存储"></a>顺序存储</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 1024</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> DataType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    DataType data[MAXSIZE];</span><br><span class="line">    <span class="keyword">int</span> last;</span><br><span class="line">&#125;SequenList;</span><br><span class="line">SequenList*L;</span><br><span class="line"></span><br><span class="line"><span class="function">SequenList*<span class="title">Create</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(SequenList*L,<span class="keyword">int</span> x,<span class="keyword">int</span> i)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Output</span><span class="params">(SequenList*L)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>其他函数以及具体实现代码不在赘述</p>
+<p>DataType为数据类型，可能时数字，字符串或者结构体。</p>
+<p>L为是指向顺序表的指针，在定义顺序表时定义。</p>
+<p>在创建顺序表时（create函数），需要给指针分配内存，并赋值。返回L完成创建。此后所有对顺序表的操作都是操作顺序表L的data数据，操作过程中，仔细处理data数组的下标，数据下标从0开始，至maxsize-1。</p>
+<p><strong>注意：操作顺序表时注意是否溢出</strong></p>
+<h3 id="链式存储"><a href="#链式存储" class="headerlink" title="链式存储"></a>链式存储</h3><h4 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">DataType</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">&#125;DataType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    DataType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;LinkList;</span><br><span class="line">LinkList *head;</span><br><span class="line"></span><br><span class="line"><span class="function">DataType <span class="title">GetElem</span><span class="params">(LinkList *head,<span class="keyword">int</span> i)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ListInsert</span><span class="params">(LinkList *head,<span class="keyword">int</span> i,DataType e)</span></span>;</span><br><span class="line"><span class="function">DataType <span class="title">ListDelete</span><span class="params">(LinkList *head,<span class="keyword">int</span> i)</span></span>;</span><br><span class="line"><span class="function">LinkList* <span class="title">CreatListR</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ListPrint</span><span class="params">(LinkList *head)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>结点储存数据域和指针域-data&amp;next。每个结点只包括一个指针域。</p>
+<p>单链表是由头指针唯一确定的，因此单链表使用头指针的名字来命名。</p>
+<h5 id="头插法建单链表"><a href="#头插法建单链表" class="headerlink" title="头插法建单链表"></a>头插法建单链表</h5><p>此方法操作简单易理解，只需要将新结点的后继结点设置为头指针指向的结点。头指针指向原来的头结点，再将头指针指向新结点。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">head = <span class="literal">NULL</span>;</span><br><span class="line">s = (LinkList*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LinkList)); <span class="comment">//新节点</span></span><br><span class="line">s-&gt;next = head;</span><br><span class="line">head = s;</span><br><span class="line"><span class="keyword">return</span> head;</span><br></pre></td></tr></table></figure>
+
+<h5 id="尾插法建表"><a href="#尾插法建表" class="headerlink" title="尾插法建表"></a>尾插法建表</h5><p>尾插法是为了链表结点的输入输出次序一致。除了头指针外还需要设置尾指针便于插入结点。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">LinkList *head,*s,*r;</span><br><span class="line">head = <span class="literal">NULL</span>;  <span class="comment">//头指针初始为空</span></span><br><span class="line">r = <span class="literal">NULL</span>;    <span class="comment">//尾指针初始为空</span></span><br><span class="line">s = (LinkList*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LinkList)); <span class="comment">//新节点</span></span><br><span class="line"><span class="keyword">if</span>(head == <span class="literal">NULL</span>)</span><br><span class="line">    head = s;  <span class="comment">//链表为空，结点插入头指针</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    r-&gt;next = s;  <span class="comment">//非空表，结点插入到尾指针指向的尾结点</span></span><br><span class="line">r = s; <span class="comment">// 尾指针指向新的表尾</span></span><br><span class="line"><span class="comment">//数据插入全部完成之后，要将尾结点指针域为空</span></span><br><span class="line"><span class="keyword">if</span>(r!=<span class="literal">NULL</span>)</span><br><span class="line">    r-&gt;next = <span class="literal">NULL</span>;   <span class="comment">//非空表，尾结点的指针域为空</span></span><br><span class="line"><span class="keyword">return</span> head;</span><br></pre></td></tr></table></figure>
+
+<p>上述办法需要单独处理第一个结点的插入，如果我们直接给头指针分配结点，作为链表的头结点就可以简化。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">head = (LinkList*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LinkList)); <span class="comment">//头结点</span></span><br><span class="line">r = head;  <span class="comment">//尾指针指向头结点</span></span><br><span class="line">s = (LinkList*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LinkList)); <span class="comment">//新节点</span></span><br><span class="line">r-&gt;next = s;  <span class="comment">//新结点插入表尾</span></span><br><span class="line">r = s;   <span class="comment">//r指向新的表尾</span></span><br><span class="line"><span class="comment">//全部数据插入完成后</span></span><br><span class="line">r-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">return</span> head;</span><br></pre></td></tr></table></figure>
+
+<h5 id="查找、插入、删除"><a href="#查找、插入、删除" class="headerlink" title="查找、插入、删除"></a>查找、插入、删除</h5><p>查找操作就是遍历链表的操作</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LinkList *p;  <span class="comment">//遍历结点</span></span><br><span class="line">p = head;  <span class="comment">//从头结点开始</span></span><br><span class="line"><span class="keyword">while</span>( p-&gt;next != <span class="literal">NULL</span> &amp;&amp; ?? )</span><br><span class="line">    p = p-&gt;next;</span><br><span class="line"><span class="keyword">return</span> p;</span><br><span class="line"><span class="comment">//找不到 return NULL;</span></span><br></pre></td></tr></table></figure>
+
+<p>插入操作十分简单，只需要先建立新结点，将新结点的后继结点插入链表中</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s-&gt;next = p-&gt;next;</span><br><span class="line">p-&gt;next = s;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意插入顺序</strong></p>
+<p>删除操作，同样先将准备删除的结点的前驱结点的后继设置为准备删除节点的后继结点，在释放结点。</p>
+<h4 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h4><p>链表中包括头指针和尾指针，只需要将尾指针指向的结点的指针域指向头结点即可，此时头结点为r-&gt;next-&gt;next，尾结点为r。</p>
+<h4 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h4><p>顾名思义，在设置结点时，不仅只有后继结点还有前驱结点。同样在双向链表中将尾结点的指针域指向头指针可以构成双向循环链表。</p>
+<p>在双向链表中删除和插入节点，需要同时处理前驱和后继结点。</p>
+<h3 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h3><ul>
+<li>学生学籍信息管理</li>
+<li>多项式的运算</li>
+</ul>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/课程//" class="article-tag-list-link color3">课程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/10/02/LinearList/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-title" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -243,8 +379,7 @@
     
     
     
-    <h1 id="2021-10-2"><a href="#2021-10-2" class="headerlink" title="2021/10/2"></a>2021/10/2</h1><h2 id="这是一个测试"><a href="#这是一个测试" class="headerlink" title="这是一个测试"></a>这是一个测试</h2><h3 id="ceshi"><a href="#ceshi" class="headerlink" title="ceshi"></a>ceshi</h3><p>ceshaid</p>
-
+    <h2 id=""><a href="#" class="headerlink" title=""></a></h2>
     
 
     
@@ -282,85 +417,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021/10/02/title/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/10/02/test/" target="_blank">test</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/10/02/test/" class="archive-article-date">
-        <time datetime="2021-10-02T09:29:04.667Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-02</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    
-    
-    
-    <hr>
-<h1 id="test"><a href="#test" class="headerlink" title="test"></a>test</h1><h2 id="test-1"><a href="#test-1" class="headerlink" title="test"></a>test</h2><h3 id="test-2"><a href="#test-2" class="headerlink" title="test"></a>test</h3><p>test</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/10/02/test/">展开全文 >></a>
     </p>
     
 
@@ -607,6 +663,10 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
