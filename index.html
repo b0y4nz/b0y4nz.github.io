@@ -80,7 +80,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 3
+			总文章数 5
 		</nav>
 		<nav class="header-smart-menu">
 			
@@ -211,6 +211,105 @@
             
 
   
+    <article id="post-MIPS指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/10/13/MIPS%E6%8C%87%E4%BB%A4/" target="_blank">MIPS指令集</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/10/13/MIPS%E6%8C%87%E4%BB%A4/" class="archive-article-date">
+        <time datetime="2021-10-13T13:30:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-13</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    
+    
+    
+    <h1 id="MIPS指令集"><a href="#MIPS指令集" class="headerlink" title="MIPS指令集"></a>MIPS指令集</h1>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计算机组成原理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/课程//" class="article-tag-list-link color3">课程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/10/13/MIPS%E6%8C%87%E4%BB%A4/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-LinearList" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -248,7 +347,7 @@
 <h3 id="顺序存储"><a href="#顺序存储" class="headerlink" title="顺序存储"></a>顺序存储</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 1024</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> DataType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    DataType data[MAXSIZE];</span><br><span class="line">    <span class="keyword">int</span> last;</span><br><span class="line">&#125;SequenList;</span><br><span class="line">SequenList*L;</span><br><span class="line"></span><br><span class="line"><span class="function">SequenList*<span class="title">Create</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(SequenList*L,<span class="keyword">int</span> x,<span class="keyword">int</span> i)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Output</span><span class="params">(SequenList*L)</span></span></span><br></pre></td></tr></table></figure>
 
 <p>其他函数以及具体实现代码不在赘述</p>
-<p>DataType为数据类型，可能时数字，字符串或者结构体。</p>
+<p>DataType为数据类型，可能是数字，字符串或者结构体。</p>
 <p>L为是指向顺序表的指针，在定义顺序表时定义。</p>
 <p>在创建顺序表时（create函数），需要给指针分配内存，并赋值。返回L完成创建。此后所有对顺序表的操作都是操作顺序表L的data数据，操作过程中，仔细处理data数组的下标，数据下标从0开始，至maxsize-1。</p>
 <p><strong>注意：操作顺序表时注意是否溢出</strong></p>
@@ -280,7 +379,17 @@
 <li>学生学籍信息管理</li>
 <li>多项式的运算</li>
 </ul>
-<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2>
+<h4 id="多项式运算"><a href="#多项式运算" class="headerlink" title="多项式运算"></a>多项式运算</h4><p>问题描述：一个一元n次多项式可以写成：<br>$$<br>P_n(x)=p_0+p_1x+p_2x^2+···+p_nx^n<br>$$<br>用一个长度为n的且每个元素有两个数据项（系数项coef和指数项exp）的线性表可以表示一个多项式。</p>
+<p>采用单链表储存多项式，可以只选择系数不为零的数据项，大大减小了所需空间。</p>
+<p>算法分析：两个多项式A和B，其和储存在多项式C中。</p>
+<p>pa，pb分别指向多项式A，B中的某结点，比较结点中的数据项。</p>
+<ol>
+<li>若pa-&gt;exp&gt;pb-&gt;exp，则将pa结点复制到C中，pa后移</li>
+<li>若pa-&gt;exp<pb->exp，则将pb结点复制到C中，pb后移</li>
+<li>若pa-&gt;exp=pb-&gt;next，且系数和不为零，则在多项式C中产生新的一项，系数为系数和，指数与pa-&gt;exp相等。</li>
+</ol>
+<p>重复上述三个操作直到A,B中的所有结点处理完。</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2>
     
 
     
@@ -417,6 +526,126 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021/10/02/title/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-c++1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/10/02/c++1/" target="_blank">c++1</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/10/02/c++1/" class="archive-article-date">
+        <time datetime="2021-10-02T13:18:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-02</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    
+    
+    
+    <h2 id="c-简介"><a href="#c-简介" class="headerlink" title="c++简介"></a>c++简介</h2><p>c++是一种静态类型的、编译式的、通用的、大小写敏感的、不规则的编程语言，支持过程化编程、面向对象编程和泛型编程。</p>
+<p>c++是c的一个超集，事实上任何合法的c程序都是合法的c++程序。</p>
+<p>静态类型的编程语言是在编译时执行类型检查，而不是在运行时执行类型检查。</p>
+<h3 id="面向对象程序设计"><a href="#面向对象程序设计" class="headerlink" title="面向对象程序设计"></a>面向对象程序设计</h3><p>面向对象的三大特性</p>
+<ul>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ul>
+<h3 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h3><p>标准的c++由三个重要部分组成</p>
+<ul>
+<li>核心语言，提供了所有构建块，包括变量，数据类型和常量等</li>
+<li>c++标准库，提供了大量的函数，用于操作文件、字符串等</li>
+<li>标准模板库（STL），提供了大量的方法，用于操作数据结构等</li>
+</ul>
+<h2 id="c-基本语法"><a href="#c-基本语法" class="headerlink" title="c++基本语法"></a>c++基本语法</h2><p>一个简单的c++程序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// main() 是程序开始执行的地方</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Hello World&quot;</span>; <span class="comment">// 输出 Hello World</span></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>c++新增命名空间概念，该程序使用std命名空间。</p>
+<p>c++的输入输出与c语言有很大不同。</p>
+<h3 id="标准输入输出"><a href="#标准输入输出" class="headerlink" title="标准输入输出"></a>标准输入输出</h3><h4 id="标准输出流（cout）"><a href="#标准输出流（cout）" class="headerlink" title="标准输出流（cout）"></a>标准输出流（cout）</h4><p>预定义的对象 <strong>cout</strong> 是 <strong>iostream</strong> 类的一个实例。cout 对象”连接”到标准输出设备，通常是显示屏。<strong>cout</strong> 是与流插入运算符 &lt;&lt; 结合使用的。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/课程//" class="article-tag-list-link color3">课程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/10/02/c++1/">展开全文 >></a>
     </p>
     
 
@@ -671,6 +900,14 @@
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">计算机组成原理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -857,6 +1094,16 @@
   <!-- <script async type="text/javascript" size="90" alpha="0.2" zIndex="0" src="/plugins/ribbon.js/ribbon.min.js"></script> -->
   
   
+  
+  <script type="text/javascript" src="/lib/snow.js"></script>
+  <script type="text/javascript" src="/lib/jquery-2.1.4.min.js"></script>
+  <script>
+    snow.down();
+    $(window).resize(function() {
+      $("canvas").css("z-index","500").remove();
+      snow.down();
+    });
+  </script>
   
 </body>
 

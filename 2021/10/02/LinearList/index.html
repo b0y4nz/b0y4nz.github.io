@@ -18,7 +18,7 @@
 <meta property="og:description" content="线性表基本概念123456789101112131415161718192021ADT LinearList&amp;#123;    数据对象: D    数据关系: R    操作集合:        CreatList(&amp;L);        构造一个空的线性表L        Length(L);        返回线性表L中的数据元素个数        Get(L,i);">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-02T13:18:04.000Z">
-<meta property="article:modified_time" content="2021-10-03T05:18:46.637Z">
+<meta property="article:modified_time" content="2021-10-03T16:01:58.505Z">
 <meta property="article:author" content="b0y4nz">
 <meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
@@ -81,7 +81,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 3
+			总文章数 5
 		</nav>
 		<nav class="header-smart-menu">
 			
@@ -242,7 +242,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.1k字</span>
+      <span class="post-count">1.3k字</span>
     </span>
   </span>
 
@@ -251,7 +251,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">4分</span>
+      <span class="post-count">5分</span>
     </span>
   </span>
 </div>
@@ -270,7 +270,7 @@
 <h3 id="顺序存储"><a href="#顺序存储" class="headerlink" title="顺序存储"></a>顺序存储</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 1024</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> DataType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    DataType data[MAXSIZE];</span><br><span class="line">    <span class="keyword">int</span> last;</span><br><span class="line">&#125;SequenList;</span><br><span class="line">SequenList*L;</span><br><span class="line"></span><br><span class="line"><span class="function">SequenList*<span class="title">Create</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(SequenList*L,<span class="keyword">int</span> x,<span class="keyword">int</span> i)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Output</span><span class="params">(SequenList*L)</span></span></span><br></pre></td></tr></table></figure>
 
 <p>其他函数以及具体实现代码不在赘述</p>
-<p>DataType为数据类型，可能时数字，字符串或者结构体。</p>
+<p>DataType为数据类型，可能是数字，字符串或者结构体。</p>
 <p>L为是指向顺序表的指针，在定义顺序表时定义。</p>
 <p>在创建顺序表时（create函数），需要给指针分配内存，并赋值。返回L完成创建。此后所有对顺序表的操作都是操作顺序表L的data数据，操作过程中，仔细处理data数组的下标，数据下标从0开始，至maxsize-1。</p>
 <p><strong>注意：操作顺序表时注意是否溢出</strong></p>
@@ -302,7 +302,17 @@
 <li>学生学籍信息管理</li>
 <li>多项式的运算</li>
 </ul>
-<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2>
+<h4 id="多项式运算"><a href="#多项式运算" class="headerlink" title="多项式运算"></a>多项式运算</h4><p>问题描述：一个一元n次多项式可以写成：<br>$$<br>P_n(x)=p_0+p_1x+p_2x^2+···+p_nx^n<br>$$<br>用一个长度为n的且每个元素有两个数据项（系数项coef和指数项exp）的线性表可以表示一个多项式。</p>
+<p>采用单链表储存多项式，可以只选择系数不为零的数据项，大大减小了所需空间。</p>
+<p>算法分析：两个多项式A和B，其和储存在多项式C中。</p>
+<p>pa，pb分别指向多项式A，B中的某结点，比较结点中的数据项。</p>
+<ol>
+<li>若pa-&gt;exp&gt;pb-&gt;exp，则将pa结点复制到C中，pa后移</li>
+<li>若pa-&gt;exp<pb->exp，则将pb结点复制到C中，pb后移</li>
+<li>若pa-&gt;exp=pb-&gt;next，且系数和不为零，则在多项式C中产生新的一项，系数为系数和，指数与pa-&gt;exp相等。</li>
+</ol>
+<p>重复上述三个操作直到A,B中的所有结点处理完。</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2>
     
 
     
@@ -420,6 +430,15 @@
 
 <nav id="article-nav">
   
+    <a href="/2021/10/13/MIPS%E6%8C%87%E4%BB%A4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MIPS指令集
+        
+      </div>
+    </a>
+  
   
     <a href="/2021/10/02/title/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">title</div>
@@ -449,7 +468,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8"><span class="toc-number">1.2.</span> <span class="toc-text">顺序存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8"><span class="toc-number">1.3.</span> <span class="toc-text">链式存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">单链表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%B4%E6%8F%92%E6%B3%95%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">头插法建单链表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%BE%E6%8F%92%E6%B3%95%E5%BB%BA%E8%A1%A8"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">尾插法建表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%88%A0%E9%99%A4"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">查找、插入、删除</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">循环链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text">双向链表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.4.</span> <span class="toc-text">应用实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">2.</span> <span class="toc-text">栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-number">3.</span> <span class="toc-text">队列</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8"><span class="toc-number">1.2.</span> <span class="toc-text">顺序存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8"><span class="toc-number">1.3.</span> <span class="toc-text">链式存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">单链表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%B4%E6%8F%92%E6%B3%95%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">头插法建单链表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%BE%E6%8F%92%E6%B3%95%E5%BB%BA%E8%A1%A8"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">尾插法建表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%88%A0%E9%99%A4"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">查找、插入、删除</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">循环链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text">双向链表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.4.</span> <span class="toc-text">应用实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E8%BF%90%E7%AE%97"><span class="toc-number">1.4.1.</span> <span class="toc-text">多项式运算</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">2.</span> <span class="toc-text">栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">2.1.</span> <span class="toc-text">定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-number">3.</span> <span class="toc-text">队列</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -602,6 +621,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">计算机组成原理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
             
             <div class="clearfix"></div>
@@ -789,6 +816,16 @@
   <!-- <script async type="text/javascript" size="90" alpha="0.2" zIndex="0" src="/plugins/ribbon.js/ribbon.min.js"></script> -->
   
   
+  
+  <script type="text/javascript" src="/lib/snow.js"></script>
+  <script type="text/javascript" src="/lib/jquery-2.1.4.min.js"></script>
+  <script>
+    snow.down();
+    $(window).resize(function() {
+      $("canvas").css("z-index","500").remove();
+      snow.down();
+    });
+  </script>
   
 </body>
 
